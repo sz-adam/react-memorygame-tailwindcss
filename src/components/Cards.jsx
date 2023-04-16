@@ -50,7 +50,7 @@ export default function Cards() {
   const [gameStarted, setGameStarted] = useState(false);
   const [score, setScore] = useState(0);
   const [fault, setFault] = useState(0)
-  const [gameOver, setGameOver] = useState(false)
+  const [gameOver, setGameOver] = useState(true)
 
 
   const shuffle = () => {
@@ -88,6 +88,7 @@ export default function Cards() {
       return;
     }
     if (selectedCards[0].img === selectedCards[1].img) {
+
       setScore((prev) => prev + 1)
       const update = cards.map((card) => {
         if (card.img === selectedCards[0].img) {
@@ -95,7 +96,7 @@ export default function Cards() {
         }
         return card
       })
-
+      setCards(update)
     } else {
       setFault((prev) => prev + 1)
     }
@@ -112,6 +113,7 @@ export default function Cards() {
 
   useEffect(() => {
     if (score === 6) {
+      console.log("GameOver")
       setGameOver(true)
     }
   }, [score])

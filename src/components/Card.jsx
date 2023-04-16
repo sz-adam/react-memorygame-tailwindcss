@@ -14,7 +14,6 @@ export default function Card({ card, setSelectedCards, selectedCards }) {
     if (selectedCards[0] === card || selectedCards[1] === card || card.matched) {
       setFlipped(true)
     } else {
-
       setFlipped(false)
     }
   }, [selectedCards])
