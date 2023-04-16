@@ -6,6 +6,19 @@ import kep3 from "../assets/kep3.jpg";
 import kep4 from "../assets/kep4.jpg";
 import kep5 from "../assets/kep5.jpg";
 import kep6 from "../assets/kep6.jpg";
+import kep7 from "../assets/kep7.jpg";
+import kep8 from "../assets/kep8.jpg";
+import kep9 from "../assets/kep9.jpg";
+import kep10 from "../assets/kep10.jpg";
+import kep11 from "../assets/kep11.jpg";
+import kep12 from "../assets/kep12.jpg";
+import kep13 from "../assets/kep13.jpg";
+import kep14 from "../assets/kep14.jpg";
+import kep15 from "../assets/kep15.jpg";
+import kep16 from "../assets/kep16.jpg";
+import kep17 from "../assets/kep17.jpg";
+import kep18 from "../assets/kep18.jpg";
+
 
 
 export default function Cards() {
@@ -16,7 +29,19 @@ export default function Cards() {
     { img: kep3, matched: false },
     { img: kep4, matched: false },
     { img: kep5, matched: false },
-    { img: kep6, matched: false },
+    { img: kep6, matched: false },    
+    { img: kep7, matched: false },
+    { img: kep8, matched: false },
+    { img: kep9, matched: false },
+    { img: kep10, matched: false },
+    { img: kep11, matched: false },
+    { img: kep12, matched: false },
+    { img: kep13, matched: false },
+    { img: kep14, matched: false },
+    { img: kep15, matched: false },
+    { img: kep16, matched: false },
+    { img: kep17, matched: false },
+    { img: kep18, matched: false },
   ];
 
   const [cards, setCards] = useState([]);
@@ -26,17 +51,21 @@ export default function Cards() {
   const [score, setScore] = useState(0);
   const [fault, setFault] = useState(0)
 
+  
+  const shuffle =() =>{
+    const shuffledArray = cardItems.sort(() => Math.random() - 0.5);
+    const selectedItems = cardItems.slice(0, 6);
+  
+    const doubleArray =[...selectedItems, ...selectedItems] //add id
+    .map((item, index) => ({ ...item, id: index }))
+    //shuffle
+    .sort(() => Math.random() - .5)
 
-  const shuffle = () => {
-    //double array
-    const shuffleArray = [...cardItems, ...cardItems]
-      //add id
-      .map((item, index) => ({ ...item, id: index }))
-      //shuffle
-      .sort(() => Math.random() - .5)
-
-    setCards(shuffleArray)
+  setCards(doubleArray)
+  console.log(doubleArray)
   }
+
+ 
 
   useEffect(() => {
     if (gameStarted) {
@@ -79,7 +108,7 @@ export default function Cards() {
   }
 
   const handleStart = () => {
-    setCards([])
+    setCards()
     setSelectedCards([])
     shuffle()
     setFault(0)
